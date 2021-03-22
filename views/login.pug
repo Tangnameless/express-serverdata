@@ -1,0 +1,16 @@
+html
+    head
+    body
+        div(class="container")
+            h1 欢迎登录    
+            form(action="/api/login" method="POST")
+                div.form-group
+                    label(for="name") 用户名:
+                    input(type="text" id="name" name="username")
+                div.form-group
+                    label(for="password") 密码:
+                    input(type="password" id="password" name="password")
+                div
+                    button(type="submit") 登录
+                div
+                    a(href="/api/register") 返回注册页面

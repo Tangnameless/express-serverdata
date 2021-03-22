@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='masterser') 所属服务器:
+      select#masterser.form-control(type='select' placeholder='选择服务器' name='masterser' required='true')
+        - server_list.sort(function(a, b) {let textA = a.Sername.toUpperCase(); let textB = b.Sername.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+        for server in server_list
+          option(value=server._id, selected=(selected_server==server._id.toString() ? 'selected' : false) ) #{server.Sername}
+
+    div.form-group
+      label(for='vmname') 虚拟机名称:
+      input#vmname.form-control(type='text' placeholder='' name='vmname' required='true' value=(undefined===vm ? '' : vm.VmName))
+    div.form-group
+      label(for='vmip') 虚拟器IP:
+      input#vmip.form-control(type='text' placeholder='IPV4格式IP地址' name='vmip' required='true' value=(undefined===vm ? '' : vm.VmIP))   
+    div.form-group
+      label(for='vmos') 虚拟机操作系统:
+      input#vmos.form-control(type='text' placeholder='win or linux' name='vmos' required='true' value=(undefined===vm ? '' : vm.VmOS))
+    div.form-group
+      label(for='vmadmin') 登录用户名:
+      input#vmadmin.form-control(type='text' placeholder='' name='vmadmin' required='true' value=(undefined===vm ? '' : vm.VmAdmin))
+    div.form-group
+      label(for='vmkey') 登录密码:
+      input#vmkey.form-control(type='password' placeholder='' name='vmkey' required='true' value=(undefined===vm ? '' : vm.VmKey))
+    div.form-group
+      label(for='vmpurpose') 虚拟机用途:
+      input#vmpurpose.form-control(type='text' placeholder='' name='vmpurpose' required='true' value=(undefined===vm ? '' : vm.VmPurpose))
+    div.form-group
+      label(for='vmowner') 虚拟机使用人:
+      input#vmowner.form-control(type='text' placeholder='' name='vmowner' required='true' value=(undefined===vm ? '' : vm.VmOwner))
+    div.form-group
+      label(for='vmremarks') 备注:
+      input#vmremarks.form-control(type='text' placeholder='' name='vmremarks' required='true' value=(undefined===vm ? '' : vm.VmRemarks))
+
+    div.form-group
+      label(for='isfordemo') 是否存放演示程序:
+      select#isfordemo.form-control(type='select' placeholder='选择状态' name='isfordemo' required='true')
+        option(value=0) 未存放
+        option(value=1) 存放
+
+    
+    button.btn.btn-primary(type='submit') 提交
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

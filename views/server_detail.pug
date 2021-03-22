@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 #{title}: #{server.Sername}
+  p #[strong SerIp:] #{server.SerIp}
+  p #[strong SerType:] #{server.SerType}
+  p #[strong SerAdmin:] #{server.SerAdmin}
+  p #[strong SerKey:] #{server.SerKey}
+
+  |
+
+  div(style='margin-left:20px;margin-top:20px')
+    h4 该服务器上的虚拟机：
+
+    each vm in server_vms
+      hr
+      p #[strong 虚拟机名称:]&nbsp;
+        a(href=vm.url) #{vm.VmName}
+
+    else
+      p 此服务器上没有创建虚拟机
+    
+
+  hr
+  p 
+    a(href=server.url+'/delete') 删除服务器
+  p 
+    a(href=server.url+'/update') 更新服务器信息

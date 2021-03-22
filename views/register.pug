@@ -1,0 +1,22 @@
+html
+    head
+    body
+        div(class="container")
+            h1 欢迎注册   
+            form(action="/api/register" method="POST")
+                div.form-group
+                    label(for="name") 用户名: 
+                    input(type="text" id="name" name="username")
+                div.form-group
+                    label(for="password") 密码: 
+                    input(type="password" id="password" name="password")
+                div.form-group
+                    label(for='userclass') 用户类别
+                    select#userclass.form-control(type='select' placeholder='选择注册用户类别' name='user_class' required='true')
+                        option(value='普通用户') 普通用户
+                        option(value='服务器管理员') 服务器管理员
+                        option(value='系统管理员') 系统管理员
+                div
+                    button(type="submit") 注册
+                div
+                    a(href="/api/login") 前往登陆页面

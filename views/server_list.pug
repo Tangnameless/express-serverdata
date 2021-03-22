@@ -1,0 +1,12 @@
+extends layout 
+block content 
+    h1=title 
+
+    ul 
+    each server in server_list 
+        li 
+            a(href=server.url)  #{server.Sername}
+            | (#{server.SerIp})
+
+    else 
+        li 没有在管理的服务器信息

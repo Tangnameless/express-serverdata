@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='sername') Sername:
+      input#sername.form-control(type='text', placeholder='Name of server' name='sername' required='true' value=(undefined===server ? '' : server.Sername) )
+    div.form-group
+      label(for='serip') SerIp:
+      input#serip.form-control(type='text', placeholder='Summary' name='serip' value=(undefined===server ? '' : server.SerIp) required='true')
+    div.form-group
+      label(for='sertype') SerType:
+      input#sertype.form-control(type='text', placeholder='ISBN13' name='sertype' value=(undefined===server ? '' : server.SerType) required='true')
+    div.form-group
+      label(for='seradmin') SerAdmin:
+      input#seradmin.form-control(type='text', placeholder='ISBN13' name='seradmin' value=(undefined===server ? '' : server.SerAdmin) required='true')
+    div.form-group
+      label(for='serkey') SerKey:
+      input#serkey.form-control(type='text', placeholder='ISBN13' name='serkey' value=(undefined===server ? '' : server.SerKey) required='true')
+    div.form-group
+      label(for='seros') SerOS:
+      input#seros.form-control(type='text', placeholder='ISBN13' name='seros' value=(undefined===server ? '' : server.SerOS) required='true')
+    div.form-group
+      label(for='ipmi_ip') IPMI_IP:
+      input#ipmi_ip.form-control(type='text', placeholder='ISBN13' name='ipmi_ip' value=(undefined===server ? '' : server.IPMI_IP) required='true')
+    div.form-group
+      label(for='ib_ip') IB_IP:
+      input#ib_ip.form-control(type='text', placeholder='ISBN13' name='ib_ip' value=(undefined===server ? '' : server.IB_IP) required='true')
+    div.form-group
+      label(for='ipmi_admin_key') IPMI_Admin_key:
+      input#ipmi_admin_key.form-control(type='text', placeholder='ISBN13' name='ipmi_admin_key' value=(undefined===server ? '' : server.IPMI_Admin_key) required='true')
+    div.form-group
+      label(for='serpurpose') SerPurpose:
+      input#serpurpose.form-control(type='textarea', placeholder='ISBN13' name='serpurpose' value=(undefined===server ? '' : server.SerPurpose) required='true')
+    div.form-group
+      label(for='serowner') SerOwner:
+      input#serowner.form-control(type='text', placeholder='ISBN13' name='serowner' value=(undefined===server ? '' : server.SerOwner) required='true') 
+    div.form-group
+      label(for='serlocation') SerLocation:
+      input#serlocation.form-control(type='text', placeholder='ISBN13' name='serlocation' value=(undefined===server ? '' : server.SerLocation) required='true')
+    div.form-group
+      label(for='serremarks') SerRemarks:
+      input#serremarks.form-control(type='textarea', placeholder='ISBN13' name='serremarks' value=(undefined===server ? '' : server.SerRemarks) required='true')   
+    button.btn.btn-primary(type='submit') 提交
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

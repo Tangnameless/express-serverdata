@@ -1,0 +1,13 @@
+extends layout 
+block content 
+    h1=title 
+
+    ul 
+    each vm in vm_list 
+        li 
+            a(href = vm.url) #{vm.VmName}
+            | (#{vm.VmIP})
+
+
+    else 
+        li 没有正在管理的虚拟机信息

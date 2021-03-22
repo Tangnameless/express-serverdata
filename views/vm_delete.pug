@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+  h1= title
+  
+  p #[strong 是否真的要删除虚拟机?]
+  
+  div(style="margin-left:20px")
+
+    p #[strong 虚拟机名称]: #{vm._id}
+  
+    p #[strong 虚拟机挂靠服务器:] 
+      a(href=vm.MasterSer.url) #{vm.MasterSer.Sername}
+    
+    p #[strong 虚拟机用途:] #{vm.VmPurpose}
+
+    p #[strong 演示程序:] 
+      if vm.IsForDemo===0
+        span.text-success #{'未存放演示程序'}
+      else if vm.IsForDemo===1
+        span.text-danger #{'存放了演示程序!'}
+
+
+  form(method='POST' action='')
+    div.form-group
+      input#id.form-control(type='hidden',name='id', required='true', value=vm._id )
+
+    button.btn.btn-primary(type='submit') 删除

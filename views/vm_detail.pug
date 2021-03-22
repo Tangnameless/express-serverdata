@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+  h1 虚拟机名称: #{vm.VmName}
+  |
+  p #[strong 所属服务器:] 
+    a(href=vm.MasterSer.url) #{vm.MasterSer.Sername}
+  p #[strong 虚拟机IP地址:] #{vm.VmIP}
+  p #[strong 虚拟机操作系统:] #{vm.VmOS}
+  p #[strong 虚拟机登录用户名:] #{vm.VmAdmin}
+  p #[strong 虚拟机登陆密码:] #{vm.VmKey}
+  // 此处要显示是否存放演示Demo
+  p #[strong 虚拟机用途:] #{vm.VmPurpose}
+  p #[strong 虚拟机使用人:] #{vm.VmOwner}
+  p #[strong 虚拟机备注信息:] #{vm.VmRemarks}
+
+  hr
+  p
+    a(href=vm.url+'/delete') 删除虚拟机
+  p
+    a(href=vm.url+'/update') 更新虚拟机信息

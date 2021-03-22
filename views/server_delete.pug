@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+  h1 #{title}: #{server.Sername}
+
+  
+  if server_vms.length
+  
+    p #[strong 在删除服务器前删除下列虚拟机]
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 虚拟机
+    
+      dl
+      each vm in server_vms
+        dt 
+          a(href=vm.url) #{vm.VmName}
+        dd #{vm.VmRemarks}
+
+  else
+    p 确认是否要删除该服务器
+    
+    form(method='POST' action='')
+      div.form-group
+        input#serverid.form-control(type='hidden',name='serverid', required='true', value=server._id )
+
+      button.btn.btn-primary(type='submit') 删除
