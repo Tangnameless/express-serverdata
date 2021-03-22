@@ -21,7 +21,7 @@ var app = express();
 // 导入 mongoose 模块
 const mongoose = require('mongoose');
 // 设置默认 mongoose 连接
-const mongoDB = 'mongodb://127.0.0.1/test1';
+const mongoDB = process.env.MONGODB_URI || 'mongodb+srv://dbUser:tyty123@cluster0.dr6vo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 mongoose.connect(mongoDB);
 // 让 mongoose 使用全局 Promise 库
 mongoose.Promise = global.Promise;

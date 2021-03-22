@@ -1,6 +1,9 @@
 {
   "name": "express-severdata",
   "version": "0.0.0",
+  "engines": {
+    "node": "14.15.3"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
